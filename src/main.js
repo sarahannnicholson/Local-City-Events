@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import createStore from './store/createStore'
+import createStore from './containers/createStore'
 import AppContainer from './containers/AppContainer'
 
 // ========================================================
@@ -15,10 +15,8 @@ const store = createStore(initialState)
 const MOUNT_NODE = document.getElementById('root')
 
 let render = () => {
-  const routes = require('./routes/index').default(store)
-
   ReactDOM.render(
-    <AppContainer store={store} routes={routes} />,
+    <AppContainer store={store} />,
     MOUNT_NODE
   )
 }

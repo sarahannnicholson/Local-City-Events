@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import './HomeView.scss'
-import * as cityMap from '../../../actions/cityMap'
+import '../../styles/HomeView.scss'
+import * as cityMap from '../../actions/cityMap'
 
 
 class HomeView extends Component {
@@ -36,3 +36,4 @@ class HomeView extends Component {
 }
 
 export default HomeView
+

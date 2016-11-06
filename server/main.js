@@ -3,8 +3,6 @@ const debug = require('debug')('app:server')
 const webpack = require('webpack')
 const webpackConfig = require('../build/webpack.config')
 const config = require('../config')
-const
-
 const app = express()
 const paths = config.utils_paths
 
