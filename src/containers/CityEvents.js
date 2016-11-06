@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import * as cityMap from '../actions/cityMap'
 
 
-class CityEvents extends Component {
+export default class CityEvents extends Component {
     constructor(props) {
         super(props);
     }
@@ -11,11 +11,9 @@ class CityEvents extends Component {
 
         return (
             <div>
-                <h3> Second Page </h3> // test
+                <h3> Second Page </h3>
             </div>
         )
     }
 
 }
-
-export default CityEvents

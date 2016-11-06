@@ -6,7 +6,7 @@ import CoreLayout from '../components/Layouts/CoreLayout'
 import HomeView from '../components/Home/HomeView'
 import CityEvents from '../containers/CityEvents'
 
-class AppContainer extends Component {
+export default class AppContainer extends Component {
   static propTypes = {
     store  : PropTypes.object.isRequired
   }
@@ -32,5 +32,3 @@ class AppContainer extends Component {
     )
   }
 }
-
-export default AppContainer

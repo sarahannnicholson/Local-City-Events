@@ -3,7 +3,7 @@ import '../../styles/HomeView.scss'
 import * as cityMap from '../../actions/cityMap'
 
 
-class HomeView extends Component {
+export default class HomeView extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,8 +15,10 @@ class HomeView extends Component {
     }
 
     makeRequest(){
-        let action = cityMap.getMap(this.state.value)
-        dispatch(action)
+        //let action = cityMap.getMap(this.state.value)
+    //    dispatch(action)
+        cityMap.getMap(this.state.value)
+       // cardActions.dustCard(card, (card) => cardActions.dustCard(card))
     }
 
     handleChange(event) {
@@ -34,6 +36,3 @@ class HomeView extends Component {
     }
 
 }
-
-export default HomeView
-
