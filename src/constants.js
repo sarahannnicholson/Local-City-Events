@@ -1,5 +1,5 @@
 
 
 export const ServerApiPaths = {
-    googleMap: "/googleMap"
+  cityCoordinates: "/coordinates"
 };

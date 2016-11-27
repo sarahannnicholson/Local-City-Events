@@ -3,7 +3,7 @@ import {
   MAP_ERROR,
   MAP_SUCCESS,
   MAP_FAILURE
-} from '../actions/cityMap';
+} from '../actions/cityDataAction';
 
 const initialState = Map({
   coordinate: null,

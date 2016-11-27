@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { createStore, applyMiddleware } from 'redux';
 import AppContainer from './containers/AppContainer'
 import makeRootReducer from './reducers/allReducers'
-import { updateLocation } from './actions/routes'
+import { updateLocation } from './actions/routesAction'
 import { browserHistory } from 'react-router'
 import thunk from 'redux-thunk';
 

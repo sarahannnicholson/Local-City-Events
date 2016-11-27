@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 
-import { getMap } from '../actions/cityMap';
+import { getCityCoordinatesAction } from '../actions/cityDataAction';
 import '../styles/HomeView.scss'
 import Header from '../components/Header/Header'
 
@@ -19,8 +19,8 @@ export class HomeView extends Component {
     }
 
     makeRequest(){
-      browserHistory.push('/CityEvents');
-      this.props.getMap(this.state.cityName)
+      browserHistory.push('/Results');
+      this.props.getCityCoordinates(this.state.cityName)
     }
 
     handleChange(event) {
@@ -41,17 +41,16 @@ export class HomeView extends Component {
 }
 
 HomeView.propTypes = {
-  getMap : React.PropTypes.func,
-  cityCoordinates: React.PropTypes.object
+  getCityCoordinates : React.PropTypes.func
 };
 
 export default connect(
-  function mapStateToProps(state) {
-    return { cityCoordinates: state.mapReducer.toJS() };
+  function mapStateToProps() {
+    return {};
   },
   function mapDispatchToProps(dispatch) {
     return {
-      getMap: cityName => dispatch(getMap(cityName))
+      getCityCoordinates: cityName => dispatch(getCityCoordinatesAction(cityName))
     };
   }
 )(HomeView);
