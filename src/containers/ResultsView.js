@@ -4,7 +4,7 @@ import { GoogleMap } from "../components/GoogleMap"
 
 import '../styles/CityEvents.scss'
 
-export class CityEvents extends Component {
+export class ResultsView extends Component {
     constructor(props) {
         super(props);
     }
@@ -31,7 +31,7 @@ export class CityEvents extends Component {
     }
 }
 
-CityEvents.propTypes = {
+ResultsView.propTypes = {
   cityCoordinates: React.PropTypes.object
 };
 
@@ -39,4 +39,4 @@ export default connect(
   function mapStateToProps(state) {
     return { cityCoordinates: state.mapReducer.toJS() };
   }
-)(CityEvents);
+)(ResultsView);

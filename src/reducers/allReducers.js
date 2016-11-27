@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import routesReducer from './routes'
-import mapReducer from './cityMap'
+import routesReducer from './routesReducer'
+import mapReducer from './cityMapReducer'
 
 const makeRootReducer = combineReducers({
   routesReducer,

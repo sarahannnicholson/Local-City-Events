@@ -6,10 +6,10 @@ export const MAP_SUCCESS = 'MAP_SUCCESS';
 export const MAP_FAILURE = 'MAP_FAILURE';
 
 
-export function getMap(cityName) {
+export function getCityCoordinatesAction(cityName) {
 
   return function(dispatch) {
-    const url = constants.ServerApiPaths.googleMap;
+    const url = constants.ServerApiPaths.cityCoordinates;
     const postData = {
       cityName: cityName
     };
@@ -17,9 +17,9 @@ export function getMap(cityName) {
       url: url,
       data: postData,
       type: "GET",
-      success: (json) => dispatch(getMapSuccess(json)),
+      success: (json) => dispatch(cityDataSuccess(json)),
       error: () => {
-        getMapFailed()
+        cityDataFailed()
       }
     };
 
@@ -27,7 +27,7 @@ export function getMap(cityName) {
   }
 }
 
-export function getMapSuccess(data) {
+function cityDataSuccess(data) {
   if(data.hasOwnProperty('noCityName')){
     return {
       type: MAP_ERROR,
@@ -42,7 +42,7 @@ export function getMapSuccess(data) {
   }
 }
 
-export function getMapFailed(){
+function cityDataFailed(){
     return{
         type: MAP_FAILURE
     }

@@ -1,4 +1,4 @@
-import { LOCATION_CHANGE } from '../actions/routes';
+import { LOCATION_CHANGE } from '../actions/routesAction';
 
 
 const initialState = null;
