@@ -10,7 +10,7 @@ exports.getCoordinates = function(cityName) {
       };
       request.get(options, function(err, response, body) {
         if(err) { // Failed request, don't show UI component
-          console.log(err);
+          console.log("Google Maps API failed with error: " + err);
           reject(err);
         }else{ // Get long and lat from response
           var firstCity = JSON.parse(body).results.shift();
@@ -21,7 +21,9 @@ exports.getCoordinates = function(cityName) {
             });
           }
           else{ // CityName doesn't exist, send message to user
-            resolve("Could not find city " + cityName)
+            resolve({
+              noCityName: "Could not find city " + cityName
+            });
           }
         }
       });

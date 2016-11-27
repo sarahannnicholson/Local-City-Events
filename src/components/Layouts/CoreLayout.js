@@ -10,10 +10,10 @@ const CoreLayout = ({ children }) => (
       {children}
     </div>
   </div>
-)
+);
 
 CoreLayout.propTypes = {
   children : React.PropTypes.element.isRequired
-}
+};
 
 export default CoreLayout

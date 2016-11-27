@@ -1,45 +1,49 @@
 import $ from 'jquery';
 import * as constants from '../constants';
 
+export const MAP_ERROR = 'MAP_ERROR';
+export const MAP_SUCCESS = 'MAP_SUCCESS';
+export const MAP_FAILURE = 'MAP_FAILURE';
+
+
 export function getMap(cityName) {
 
-    const url = constants.ServerApiPaths.googleMap
+  return function(dispatch) {
+    const url = constants.ServerApiPaths.googleMap;
     const postData = {
-        cityName: cityName
+      cityName: cityName
+    };
+    const requestSettings = {
+      url: url,
+      data: postData,
+      type: "GET",
+      success: (json) => dispatch(getMapSuccess(json)),
+      error: () => {
+        getMapFailed()
+      }
     };
 
-    const requestSettings = {
-        url: url,
-        data: postData,
-        async: true,
-        type: "GET",
-        success: (json) => getMapSuccess(json),
-        error: (jqxhr, textStatus, error) => {
-            getMapFailed(jqxhr)
-        }
-    }
-
     $.get(requestSettings)
+  }
 }
 
-function getMapSuccess(data) {
-  return {
-    type: 'MAP_SUCCESS',
-    data: data
-}
-}
-
-function getMapFailed(error){
-    return{
-        type: 'MAP_FAILURE'
+export function getMapSuccess(data) {
+  if(data.hasOwnProperty('noCityName')){
+    return {
+      type: MAP_ERROR,
+      payload: data.noCityName
     }
+  }
+  else if(data.hasOwnProperty('lng') && data.hasOwnProperty('lat')){
+    return {
+      type: MAP_SUCCESS,
+      payload: data
+    }
+  }
 }
 
-function get(){
-
-}
-
-function post(){
-
-
+export function getMapFailed(){
+    return{
+        type: MAP_FAILURE
+    }
 }

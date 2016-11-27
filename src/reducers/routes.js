@@ -1,16 +1,13 @@
-import { combineReducers } from 'redux'
-import locationReducer from '../actions/routes'
+import { LOCATION_CHANGE } from '../actions/routes';
 
-export const makeRootReducer = (asyncReducers) => {
-  return combineReducers({
-    location: locationReducer,
-    ...asyncReducers
-  })
+
+const initialState = null;
+
+export default function routesReducer (state = initialState, action) {
+  switch(action.type) {
+    case LOCATION_CHANGE:
+      return action.payload;
+    default:
+      return state;
+  }
 }
-
-export const injectReducer = (store, { key, reducer }) => {
-  store.asyncReducers[key] = reducer
-  store.replaceReducer(makeRootReducer(store.asyncReducers))
-}
-
-export default makeRootReducer
