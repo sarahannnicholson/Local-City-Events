@@ -1,25 +1,30 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import createStore from './containers/createStore'
+import { createStore, applyMiddleware } from 'redux';
 import AppContainer from './containers/AppContainer'
+import makeRootReducer from './reducers/allReducers'
+import { updateLocation } from './actions/routes'
+import { browserHistory } from 'react-router'
+import thunk from 'redux-thunk';
 
 // ========================================================
 // Store Instantiation
 // ========================================================
-const initialState = window.___INITIAL_STATE__
-const store = createStore(initialState)
 
+const store = createStore(makeRootReducer, applyMiddleware(thunk));
+
+store.unsubscribeHistory = browserHistory.listen(updateLocation(store));
 // ========================================================
 // Render Setup
 // ========================================================
-const MOUNT_NODE = document.getElementById('root')
+const MOUNT_NODE = document.getElementById('root');
 
 let render = () => {
   ReactDOM.render(
     <AppContainer store={store} />,
     MOUNT_NODE
   )
-}
+};
 
 // ========================================================
 // Developer Tools Setup
@@ -34,12 +39,12 @@ if (__DEV__) {
 if (__DEV__) {
   if (module.hot) {
     // Development render functions
-    const renderApp = render
+    const renderApp = render;
     const renderError = (error) => {
-      const RedBox = require('redbox-react').default
+      const RedBox = require('redbox-react').default;
 
       ReactDOM.render(<RedBox error={error} />, MOUNT_NODE)
-    }
+    };
 
     // Wrap render in try/catch
     render = () => {
@@ -48,7 +53,7 @@ if (__DEV__) {
       } catch (error) {
         renderError(error)
       }
-    }    
+    }
   }
 }
 

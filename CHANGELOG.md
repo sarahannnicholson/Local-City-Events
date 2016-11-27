@@ -183,7 +183,6 @@ Changelog
 * Improved how configuration determines when to apply HMR-specific Babel transforms
 * Replaced explicit aliases with `resolve.root`
 * Renamed karma configuration file to more widely-known `karma.conf`
-* Made `CoreLayout` a pure (stateless) component
 * Renamed debug namespace from `kit:*` to `app:*`
 * Standardized coding conventions
 * Added ability to easily specify environment-specific configuration overrides
