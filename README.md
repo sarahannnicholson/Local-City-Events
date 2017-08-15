@@ -3,6 +3,9 @@ My motivation for this project stemmed from trying to find activities while on v
 This web application utilizes a variety of social media APIs to provide recommendations to the user. </br>
 A user will begin by providing a city name and the application will generate the latest Instagram posts, Foursquare recommendations, and other social media information for that location. The idea is for users to get recommendations to experience a city like the locals.
 
+## Acknowledgement 
+I used the react-redux-starter-kit to get started with this project. The repo can be found [here](https://github.com/davezuko/react-redux-starter-kit)
+
 ## Requirements
 * node `^4.5.0`
 * npm `^3.0.0`
