@@ -10,3 +10,8 @@ For example:
 @import './variables/components';
 @import './themes/default';
 */
+
+
+html, body, #root, .homeView-Main{
+	height: 100%;
+}

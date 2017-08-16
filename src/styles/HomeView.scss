@@ -3,3 +3,17 @@
   width: 120px;
   margin: 1.5rem auto;
 }
+
+.homeView-Main {
+	background-image: url("../content/Background.jpg");
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.credit{
+	position: absolute;
+	bottom: 0px;
+	left: 1rem;
+	color: white
+}

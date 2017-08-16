@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-import Autocomplete from 'react-google-autocomplete';
+import { Row, Col } from 'react-bootstrap';
 
 import { getCityCoordinatesAction } from '../actions/cityDataAction';
-import '../styles/HomeView.scss'
-import Header from '../components/Header/Header'
+import '../styles/HomeView.scss';
+import { HomeCard } from '../components/HomeCard';
 
 
 export class HomeView extends Component {
@@ -15,35 +15,35 @@ export class HomeView extends Component {
 			cityName: ''
 		};
 
-		this.onPlaceSelected = this.onPlaceSelected.bind(this);
-		this.makeRequest = this.makeRequest.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handlePlaceSelected = this.handlePlaceSelected.bind(this);
 	}
 
-	makeRequest(){
+	handleSubmit(){
 		browserHistory.push('/Results');
 		this.props.getCityCoordinates(this.state.cityName)
 	}
 
-	onPlaceSelected(event) {
-			this.setState({cityName: event.formatted_address});
+	handlePlaceSelected(event) {
+		this.setState({cityName: event.formatted_address});
 	}
 
 	render(){
+		var verticallyCenter = {
+			position: 'absolute',
+			top: '45%',
+			width: '100%'
+		}
 		return (
-			<div>
-				<div className='container text-center'>
-					<Header />
-					<Autocomplete
-						style={{width: '90%'}}
-						onPlaceSelected={(place) => {
-							console.log(place);
-						}}
-						types={['(regions)']}
-						placeholder="Enter a city name"
-						onPlaceSelected={this.onPlaceSelected}
-					/>
-					<button onClick={this.makeRequest}> Submit </button>
-				</div>
+			<div className="homeView-Main">
+				<Row style={verticallyCenter}>
+					<Col xs={10} xsOffset={1} md={4} mdOffset={4}>
+						<HomeCard onSubmit={this.handleSubmit} onPlaceSelected={this.handlePlaceSelected}/>
+					</Col>
+				</Row>
+				<footer>
+					<p className="credit"> Photo by Mona Eendra on Unsplash </p>
+				</footer>
 			</div>
 		)
 	}

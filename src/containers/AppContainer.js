@@ -3,6 +3,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { browserHistory, Router, Route, IndexRoute} from 'react-router'
 import { Provider } from 'react-redux'
 
+import '../styles/_base.scss'
 import HomeView from './HomeView'
 import ResultsView from './ResultsView'
 
