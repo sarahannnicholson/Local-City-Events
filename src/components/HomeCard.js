@@ -20,10 +20,10 @@ export class HomeCard extends Component{
 			<Card>
 				<CardHeader title="Find Local Events" titleStyle={{fontSize: 30}} avatar={<Avatar icon={<MapsPinDrop />} size={40} />} />
 				<CardActions>
-					<Row>
-						<Col xs={8}>
+					<Row style={{marginRight: 0, marginLeft: 0}}>
+						<Col sm={8} xs={12}>
 							<div className="text-center">
-								<TextField>
+								<TextField id="cityName" fullWidth={true}>
 									<Autocomplete
 										types={['(regions)']}
 										onPlaceSelected={this.props.onPlaceSelected}
@@ -31,11 +31,12 @@ export class HomeCard extends Component{
 								</TextField>
 							</div>
 						</Col>
-						<Col xs={4}>
+						<Col sm={4} xs={12}>
 							<RaisedButton
 								label="Submit"
 								labelPosition="before"
 								primary={true}
+								fullWidth={true}
 								icon={<NavigationChevronRight />}
 								onClick={this.props.onSubmit}
 							/>

@@ -36,11 +36,11 @@ export class HomeView extends Component {
 		}
 		return (
 			<div className="homeView-Main">
-				<Row style={verticallyCenter}>
-					<Col xs={10} xsOffset={1} md={4} mdOffset={4}>
+				<div style={verticallyCenter}>
+					<Col xs={10} xsOffset={1} sm={8} smOffset={2} md={6} mdOffset={3}>
 						<HomeCard onSubmit={this.handleSubmit} onPlaceSelected={this.handlePlaceSelected}/>
 					</Col>
-				</Row>
+				</div>
 				<footer>
 					<p className="credit"> Photo by Mona Eendra on Unsplash </p>
 				</footer>
