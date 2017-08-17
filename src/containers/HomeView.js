@@ -26,14 +26,12 @@ export class HomeView extends Component {
 		this.props.setPlace(this.state)
 	}
 
-	handlePlaceSelected(suggest, coordinate) {
-		if (!!coordinate){
-			this.setState({
-				cityName: coordinate.title,
-				lng: coordinate.longitude,
-				lat: coordinate.latitude
-			});
-		}
+	handlePlaceSelected(event) {
+		this.setState({
+			cityName: event.formatted_address,
+			lng: event.geometry.location.lng(),
+			lat: event.geometry.location.lat()
+		});
 	}
 
 	render(){

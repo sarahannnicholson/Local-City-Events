@@ -8,7 +8,6 @@ import { Row, Col } from 'react-bootstrap'
 import FontIcon from 'material-ui/FontIcon'
 import MapsPinDrop from 'material-ui/svg-icons/maps/pin-drop'
 import NavigationChevronRight from 'material-ui/svg-icons/navigation/chevron-right'
-import MyGoogleSuggest from '../components/AutocompleteInput'
 
 export class HomeCard extends Component{
 
@@ -25,7 +24,12 @@ export class HomeCard extends Component{
 					<Row style={{marginRight: 0, marginLeft: 0}}>
 						<Col sm={8} xs={12}>
 							<div className="text-center">
-								<MyGoogleSuggest onSelectSuggest={this.props.onPlaceSelected}/>
+								<TextField id="cityName" fullWidth={true}>
+									<Autocomplete
+										types={['(regions)']}
+										onPlaceSelected={this.props.onPlaceSelected}
+									/>
+								</TextField>
 							</div>
 						</Col>
 						<Col sm={4} xs={12}>

@@ -8,7 +8,6 @@ import IconButton from 'material-ui/IconButton'
 import { GoogleMap } from "../components/GoogleMap"
 import Autocomplete from 'react-google-autocomplete'
 import { setPlaceAction } from '../actions/cityDataAction'
-import MyGoogleSuggest from '../components/AutocompleteInput'
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back'
 
 import '../styles/CityEvents.scss'
@@ -16,29 +15,6 @@ import '../styles/CityEvents.scss'
 export class ResultsView extends Component {
 	constructor(props) {
 		super(props)
-		this.state = {
-			cityName: '',
-			lng: '',
-			lat: '',
-		}
-
-		this.handleSubmit = this.handleSubmit.bind(this)
-		this.handlePlaceSelected = this.handlePlaceSelected.bind(this)
-	}
-
-	handleSubmit(){
-		browserHistory.push('/Results')
-		this.props.setPlace(this.state)
-	}
-
-	handlePlaceSelected(suggest, coordinate) {
-		if (!!coordinate){
-			this.setState({
-				cityName: coordinate.title,
-				lng: coordinate.longitude,
-				lat: coordinate.latitude
-			});
-		}
 	}
 
 	render(){
