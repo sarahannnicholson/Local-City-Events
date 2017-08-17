@@ -5,13 +5,27 @@ export const MAP_ERROR = 'MAP_ERROR';
 export const MAP_SUCCESS = 'MAP_SUCCESS';
 export const MAP_FAILURE = 'MAP_FAILURE';
 
+export function setPlaceAction(place){
 
-export function getCityCoordinatesAction(cityName) {
+	return function(dispatch) {
+		dispatch(setPlace(place))
+	}
+
+	function setPlace(place){
+		return {
+			type: MAP_SUCCESS,
+			payload: place
+		}
+	}
+}
+
+
+export function getCityCoordinatesAction(placeId) {
 
 	return function(dispatch) {
 		const url = constants.ServerApiPaths.cityCoordinates;
 		const postData = {
-			cityName: cityName
+			placeId: placeId
 		};
 		const requestSettings = {
 			url: url,

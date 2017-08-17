@@ -1,29 +1,61 @@
+import { connect } from 'react-redux'
+import { Col } from 'react-bootstrap'
 import React, { Component } from 'react'
-import { connect } from 'react-redux';
-import { GoogleMap } from "../components/GoogleMap"
+import { browserHistory } from 'react-router'
+import TextField from 'material-ui/TextField'
 import AppBar from 'material-ui/AppBar/AppBar'
+import IconButton from 'material-ui/IconButton'
+import { GoogleMap } from "../components/GoogleMap"
+import Autocomplete from 'react-google-autocomplete'
+import { setPlaceAction } from '../actions/cityDataAction'
+import MyGoogleSuggest from '../components/AutocompleteInput'
+import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back'
 
 import '../styles/CityEvents.scss'
 
 export class ResultsView extends Component {
 	constructor(props) {
-		super(props);
+		super(props)
+		this.state = {
+			cityName: '',
+			lng: '',
+			lat: '',
+		}
+
+		this.handleSubmit = this.handleSubmit.bind(this)
+		this.handlePlaceSelected = this.handlePlaceSelected.bind(this)
+	}
+
+	handleSubmit(){
+		browserHistory.push('/Results')
+		this.props.setPlace(this.state)
+	}
+
+	handlePlaceSelected(suggest, coordinate) {
+		if (!!coordinate){
+			this.setState({
+				cityName: coordinate.title,
+				lng: coordinate.longitude,
+				lat: coordinate.latitude
+			});
+		}
 	}
 
 	render(){
-		const { cityCoordinates } = this.props;
-		const { error } = cityCoordinates;
+		const { place } = this.props;
+		const { error } = place;
 
 		return (
 			<div>
-				<AppBar></AppBar>
+				<AppBar
+					title={place.details.cityName}
+					iconElementLeft={<IconButton><NavigationArrowBack/></IconButton>}
+					onLeftIconButtonTouchTap={browserHistory.goBack}>
+				</AppBar>
 				<div>
-					<h3> Second Page </h3>
-					{ !!cityCoordinates.coordinate &&
+					{ !!place.details &&
 					<div>
-						<p> {cityCoordinates.coordinate.lng} </p>
-						<p> {cityCoordinates.coordinate.lat} </p>
-						<GoogleMap lat={cityCoordinates.coordinate.lat} lng={cityCoordinates.coordinate.lng} />
+						<GoogleMap lat={place.details.lat} lng={place.details.lng} />
 					</div>
 					}
 					{ error!== null &&
@@ -36,11 +68,17 @@ export class ResultsView extends Component {
 }
 
 ResultsView.propTypes = {
-	cityCoordinates: React.PropTypes.object
+	place: React.PropTypes.object,
+	setPlace : React.PropTypes.func
 };
 
 export default connect(
 	function mapStateToProps(state) {
-		return { cityCoordinates: state.mapReducer.toJS() };
+		return { place: state.mapReducer.toJS() };
+	},
+	function mapDispatchToProps(dispatch) {
+		return {
+			setPlace: Place => dispatch(setPlaceAction(Place))
+		};
 	}
 )(ResultsView);
