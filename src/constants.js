@@ -1,5 +1,5 @@
 
 
 export const ServerApiPaths = {
-  cityCoordinates: "/coordinates"
+  socMedia: "/socMedia"
 };

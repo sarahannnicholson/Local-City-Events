@@ -6,7 +6,7 @@ import {
 } from '../actions/cityDataAction';
 
 const initialState = Map({
-  coordinate: null,
+  details: null,
   error: null,
   show: true
 });

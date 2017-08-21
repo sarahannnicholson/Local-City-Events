@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
 import { Row, Col } from 'react-bootstrap'
 
-import { setPlaceAction } from '../actions/cityDataAction'
+import { setPlaceAction, getSocMediaDataAction } from '../actions/cityDataAction'
 import '../styles/HomeView.scss'
 import { HomeCard } from '../components/HomeCard'
 
@@ -24,6 +24,7 @@ export class HomeView extends Component {
 	handleSubmit(){
 		browserHistory.push('/Results');
 		this.props.setPlace(this.state)
+		this.props.getSocMediaData(this.state)
 	}
 
 	handlePlaceSelected(event) {
@@ -56,7 +57,8 @@ export class HomeView extends Component {
 }
 
 HomeView.propTypes = {
-	setPlace : React.PropTypes.func
+	setPlace : React.PropTypes.func,
+	getSocMediaData: React.PropTypes.func
 };
 
 export default connect(
@@ -65,7 +67,8 @@ export default connect(
 	},
 	function mapDispatchToProps(dispatch) {
 		return {
-			setPlace: Place => dispatch(setPlaceAction(Place))
+			setPlace: Place => dispatch(setPlaceAction(Place)),
+			getSocMediaData: Place => dispatch(getSocMediaDataAction(Place))
 		};
 	}
 )(HomeView);
