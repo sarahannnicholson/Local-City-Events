@@ -1,5 +1,5 @@
 
 
 export const ServerApiPaths = {
-  socMedia: "/socMedia"
+	socMedia: "/socMedia"
 };

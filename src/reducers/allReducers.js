@@ -4,9 +4,9 @@ import mapReducer from './mapReducer'
 import foursquareReducer from './socialMediaReducer'
 
 const makeRootReducer = combineReducers({
-  routesReducer,
-  mapReducer,
-  foursquareReducer
+	routesReducer,
+	mapReducer,
+	foursquareReducer
 });
 
 export default makeRootReducer

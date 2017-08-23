@@ -5,26 +5,26 @@ import {
 } from '../actions/cityDataAction';
 
 const foursquareInitState = Map({
-  venues: null,
-  error: null,
-  show: true
+	venues: null,
+	error: null,
+	show: true
 });
 
 export default function foursquareReducer(state = foursquareInitState, action) {
-  switch(action.type) {
-    case SOCIAL_MEDIA_ERROR:
-      return state.merge({
-        'venues': null,
-        'error': action.payload,
-        'show': true
-      });
-    case SOCIAL_MEDI_SUCCESS:
-      return state.merge({
-        'venues': action.payload,
-        'error': null,
-        'show': true
-      });
-    default:
-      return state;
-  }
+	switch(action.type) {
+		case SOCIAL_MEDIA_ERROR:
+			return state.merge({
+				'venues': null,
+				'error': action.payload,
+				'show': true
+			});
+		case SOCIAL_MEDI_SUCCESS:
+			return state.merge({
+				'venues': action.payload,
+				'error': null,
+				'show': true
+			});
+		default:
+			return state;
+	}
 }
